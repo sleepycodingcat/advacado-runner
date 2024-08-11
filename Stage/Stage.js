@@ -14,10 +14,7 @@ export default class Stage extends StageBase {
     super(...args);
 
     this.costumes = [
-      new Costume("backdrop1", "./Stage/costumes/backdrop1.svg", {
-        x: 326.85118895751225,
-        y: 132.52489702837607,
-      }),
+      new Costume("Level 1", "./Stage/costumes/Level 1.svg", { x: 0, y: 0 }),
     ];
 
     this.sounds = [new Sound("pop", "./Stage/sounds/pop.wav")];
@@ -25,8 +22,18 @@ export default class Stage extends StageBase {
     this.triggers = [];
 
     this.vars.gravity = -1.5;
-    this.vars.jumpForce = 14;
-    this.vars.acceleration = 1.5;
-    this.vars.resistance = 0;
+    this.vars.jumpForce = 16;
+    this.vars.acceleration = 2;
+    this.vars.resistance = 0.8;
+    this.vars.scene = 1;
+
+    this.watchers.scene = new Watcher({
+      label: "SCENE #",
+      style: "normal",
+      visible: true,
+      value: () => this.vars.scene,
+      x: 245,
+      y: 175,
+    });
   }
 }
